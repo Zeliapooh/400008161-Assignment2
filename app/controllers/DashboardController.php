@@ -15,6 +15,8 @@ class DashboardController extends AbstractController
   }
 
   public function index($response){
+
+    //checks to see the users role and directs them to the specified view
     if($this->security->checkPermission('Research Group Manager',$this->session)){
       $response->renderView('DashboardView');
       return;

@@ -23,16 +23,17 @@ class CreateUserController extends AbstractController
 
     public function index($response)
     {
+        //checks to see the users role and directs them to the specified view
         if ($this->security->checkPermission('Research Group Manager', $this->session)) {
             $response->renderView('CreateUserView');
             return;
         }
         if ($this->security->checkPermission('Research Study Manager', $this->session)) {
-            $response->renderView('DashboardViewStudyManager');
+            $response->redirect('Dashboard.php');
             return;
         }
         if ($this->security->checkPermission('Researcher', $this->session)) {
-            $response->renderView('DashboardViewResearcher');
+            $response->redirect('Dashboard.php');
             return;
         }
         if(!$this->session->get('username')){
@@ -48,7 +49,6 @@ class CreateUserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $csrfToken = $_POST['csrfToken'];
             if ($this->security->validateCSRFToken($this->session->get('token'), $csrfToken)) {
-                print_r($_POST);
                 $validator = new RegistrationFormValidator();
                 $validator->validate($_POST);
 
@@ -79,6 +79,7 @@ class CreateUserController extends AbstractController
     function registerUser($response)
     {
         $hashPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
         //save to the users table
         $roleId = $this->model->getRoleId($_POST['role'])['id'];
         $data = [
@@ -108,16 +109,6 @@ class CreateUserController extends AbstractController
         } else {
             echo 'User not saved to users table';
         }
-
-        //$this->model->insert_user($_POST['username'], $_POST['email'], $_POST['password']);
-
-
-        // $hashPassword = password_hash($this->password, PASSWORD_DEFAULT);
-
-
-        // $this->model->insert_user($this->username, $this->password, $this->email);
-
-        //require '..\views\LoginView.php';
 
     }
 

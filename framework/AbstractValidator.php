@@ -1,7 +1,6 @@
 <?php
 namespace COMP3385;
 
-// system/core/Validator.php
 abstract class AbstractValidator {
     protected $errors = [];
 
@@ -17,7 +16,6 @@ abstract class AbstractValidator {
 
     public function validateLength($field, $value, $length)  {
         if(strlen($value) < $length){
-            //The field {$field} must be more than {$length}.
             $this->addError($field, 'The field '. $field.' must be more than '.$length.' .');
         }
     }

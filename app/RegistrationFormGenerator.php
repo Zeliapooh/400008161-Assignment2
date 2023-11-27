@@ -53,7 +53,7 @@ class RegistrationFormGenerator extends AbstractFormGenerator
     {
         return $this->generateInput('text', $name, $attributes);
     }
-    public function generateInputCSRFInput(): string
+    public function generateInputCSRFInput(): string //Creates the CSRF Token for duplicate form submission
     {
         $security = new Security();
         $session = new SessionManager();

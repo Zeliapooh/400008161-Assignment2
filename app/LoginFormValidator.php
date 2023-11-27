@@ -17,5 +17,4 @@ class LoginFormValidator extends AbstractValidator {
 
     }
     
-    // Other validation methods like validatePassword, validateUsername, etc.
 }

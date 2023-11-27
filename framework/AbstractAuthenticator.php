@@ -18,11 +18,9 @@ abstract class AbstractAuthenticator {
     public function logout() {
         $this->session->destroy();
         $this->session->deleteAll();
-       // unset($_SESSION['user']); // Unset user session on logout
     }
 
     public function isLoggedIn() {
-       // $this->session->get('username');
         return  $this->session->get('username'); // Check if user is logged in
     }
 }

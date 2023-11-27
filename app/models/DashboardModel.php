@@ -15,10 +15,5 @@ class DashboardModel extends AbstractORM{
         $this->connection = new \PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     }
 
-    // public function check_email_exists($email)
-    // {
-    //     $stmt = $this->connection->prepare("SELECT * FROM users WHERE email = ?");
-    //     $stmt->execute([$email]);
-    //     return $stmt->fetch(\PDO::FETCH_ASSOC);
-    // }
+
 }

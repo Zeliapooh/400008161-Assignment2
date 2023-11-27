@@ -10,7 +10,6 @@ namespace COMP3385;
 
    
     public function generateCSRFToken() {
-        // Generate a CSRF token
         $token = bin2hex(random_bytes(32));
         return $token;
     }

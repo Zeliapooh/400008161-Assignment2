@@ -65,28 +65,4 @@ class CreateUserFormGenerator extends AbstractFormGenerator
         return $this->generateInput('text', $name, $attributes);
     }
 
-    // protected $validationRules = [];
-
-    // public function addValidationRule($name, $rules, $messages =  []) {
-    //     $this->validationRules[$name] = [
-    //         'rules' => $rules,
-    //         'messages' => $messages,
-    //     ];
-    // }
-
-    // public function validate($data) {
-    //     foreach ($this->formData as $name => $field) {
-    //         if (isset($field['rules'])) {
-    //             $rules = explode('|', $field['rules']);
-
-    //             foreach ($rules as $rule) {
-    //                 if ($rule === 'required' && empty($data[$name])) {
-    //                     //$this->errors[$name][] = ucfirst($name) . ' is required.';
-    //                     $this->addError($name, ucfirst($name) . ' is required.');
-    //                 }
-    //                 // Add more validation rules as needed
-    //             }
-    //         }
-    //     }
-    // }
 }

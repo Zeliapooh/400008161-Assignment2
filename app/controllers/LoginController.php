@@ -26,6 +26,8 @@ class LoginController extends AbstractController
 
   public function index($response)
   {
+
+        //checks to see the users role and directs them to the specified view
     if($this->security->checkPermission('Research Group Manager',$this->session)){
       $response->renderView('DashboardView');
       return;
@@ -48,6 +50,8 @@ class LoginController extends AbstractController
     //If the form was submitted
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $csrfToken = $_POST['csrfToken'];
+
+      //makes sure the form wasn't resubmitted 
       if ($this->security->validateCSRFToken($this->session->get('token'), $csrfToken)) {
         $this->validator->validate($_POST);
         $errors = $this->validator->getErrors();
@@ -59,17 +63,18 @@ class LoginController extends AbstractController
         }
       }
     } else {
-      echo 'Resubmissions Not Allowed';
+      //echo 'Resubmissions Not Allowed';
       $response->renderView('LoginView');
     }
 
   }
 
-  public function loginUser($response)
+  public function loginUser($response) 
   {
     if ($this->authenticator->login($_POST['email'], $_POST['password'])) {
       $response->redirect('Dashboard.php');
     } else {
+      //generates the error form
       $errors = $this->validator->getErrors();
       $formContent = $this->formGenerator->generateErrorForm($errors, $_POST);
       $this->templateEngine->generateTemplate($this->config, $formContent, 'Login', 'Incorrect password or email');
@@ -78,6 +83,7 @@ class LoginController extends AbstractController
 
   public function logoutUser($response)
   {
+    //logs out user by destroying the session and its data
     $this->authenticator->logout();
     $response->redirect('Login.php');
   }

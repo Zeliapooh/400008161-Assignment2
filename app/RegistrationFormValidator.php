@@ -32,5 +32,4 @@ class RegistrationFormValidator extends AbstractValidator {
         $this->validateRequired($field, $username);
  
     }
-    // Other validation methods like validatePassword, validateUsername, etc.
 }

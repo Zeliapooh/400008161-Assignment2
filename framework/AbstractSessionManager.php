@@ -24,5 +24,4 @@ abstract class AbstractSessionManager {
         session_destroy();
     }
 
-    // Other methods can be added as needed
 }

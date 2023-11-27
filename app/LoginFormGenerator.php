@@ -6,6 +6,7 @@ class LoginFormGenerator extends AbstractFormGenerator
 
     public function generateForm()
     {
+        // creating the form
         $formContent = $this->openForm('LoginFormSubmitted.php', 'post', ['class' => 'my-form form-inline']);
         $formContent.= $this->generateEmailInput('email', ['class'=> 'inputField','placeholder'=>'JohnDoe@outlook.com', 'required'=> true]);
         $formContent.= $this->generatePasswordInput('password', ['class'=> 'inputField', 'required'=> true]);
@@ -18,12 +19,8 @@ class LoginFormGenerator extends AbstractFormGenerator
 
     public function generateErrorForm($errors, $POST)
     {
-      //instantiating the classes that are neeeded
-
   
       $config = parse_ini_file(CONFIG_DIR . '\config.ini', true);
-  
-      //adding the errors to the form
       $this->addError($errors);
   
       // creating the form
@@ -32,7 +29,7 @@ class LoginFormGenerator extends AbstractFormGenerator
       $formContent .= $this->generatePasswordInput('password', ['class' => 'inputField', 'required' => true]);
       $formContent .= $this->generateInputCSRFInput();
       $formContent.= $this->generateButton('Register User', ['name' =>'', 'class' => 'btn btn-primary btn-lg btn-block', 'type' => 'submit', 'aria-pressed'=>"true"]); ;
-    $formContent .= $this->closeForm();
+      $formContent .= $this->closeForm();
       return $formContent;
 
   
@@ -54,7 +51,7 @@ class LoginFormGenerator extends AbstractFormGenerator
         return $this->generateInput('text', $name, $attributes);
     }
 
-    public function generateInputCSRFInput(): string
+    public function generateInputCSRFInput(): string //Creates the CSRF Token for duplicate form submission
     {
         $security = new Security();
         $session = new SessionManager();

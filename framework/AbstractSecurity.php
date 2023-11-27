@@ -6,7 +6,6 @@ abstract class AbstractSecurity {
 
     protected $session; 
     public function __construct() {
-       // $this->session = $session;
 
     }
 
@@ -21,10 +20,8 @@ abstract class AbstractSecurity {
     public function validateCSRFToken($sessionToken, $token) {
         // Validate CSRF token
         if($sessionToken!= null && hash_equals($sessionToken, $token)) {
-            // Valid token
             return true;
         }
-        // Invalid token
         return false;
     }
 

@@ -16,7 +16,6 @@ class Router2 extends AbstractRouter2
         $this->routes = $routes;
     }
 
-    
     public function addIndividualRoutes($route, $function) {
         $this->routes[$route] = $function;
     }

@@ -11,5 +11,4 @@ namespace COMP3385;
             session_unset();
         }
     }
-    // Other methods can be added as needed
 }

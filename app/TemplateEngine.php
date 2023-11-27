@@ -6,7 +6,7 @@ class TemplateEngine extends AbstractTemplateEngine{
 
     public function generateTemplate($config, $formContent, $header, $formErrors){
         $appName = $config['appName']['name'];
-        // // Assign variables to be used in the template
+        // Assign variables to be used in the template
          $this->assign('title', $appName);
          $this->assign('header', $header);
          $this->assign('formContent', $formContent);

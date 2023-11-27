@@ -23,7 +23,6 @@ abstract class AbstractORM
     public function fetch($table, $column, $id)
     {
         $query = $this->connection->prepare("SELECT * FROM $table WHERE $column = (?) ");
-        //$query->bindParam(':id', $id);
         $query->execute([$id]);
         return $query->fetch(\PDO::FETCH_ASSOC);
     }
@@ -43,5 +42,4 @@ abstract class AbstractORM
         return $query->execute();
     }
 
-    // Additional methods for updating, deleting, or more complex queries could be added here
 }
